@@ -10,21 +10,27 @@ export class ConsoleLogger implements Logger {
   }
 
   trace(...messages: any[]) {
+    // tslint:disable-next-line:no-console
     console.log(this.name, '[TRACE]', ...messages);
   }
   debug(...messages: any[]) {
+    // tslint:disable-next-line:no-console
     console.log(this.name, '[DEBUG]', ...messages);
   }
   info(...messages: any[]) {
+    // tslint:disable-next-line:no-console
     console.log(this.name, '[INFO]', ...messages);
   }
   warn(...messages: any[]) {
+    // tslint:disable-next-line:no-console
     console.log(this.name, '[WARN]', ...messages);
   }
   error(...messages: any[]) {
+    // tslint:disable-next-line:no-console
     console.log(this.name, '[ERROR]', ...messages);
   }
   fatal(...messages: any[]) {
+    // tslint:disable-next-line:no-console
     console.log(this.name, '[FATAL]', ...messages);
   }
 

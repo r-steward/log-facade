@@ -1,5 +1,5 @@
 {
-  "name": "log-facade",
+  "name": "logging-facade",
   "version": "1.0.0",
   "description": "Typescript Logger API",
   "main": "lib/index.js",
