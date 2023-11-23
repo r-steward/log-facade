@@ -5,7 +5,7 @@ export class LogFactoryImpl implements LoggerFactory {
   private _binding: LoggerBinding | null = null;
   private _loggerProxies: Map<string, LoggerProxy> | null = null;
 
-  constructor(private _defaultLogger: Logger) { }
+  constructor(private _defaultLogger: Logger) {}
 
   public bindLogger(binding: LoggerBinding) {
     if (this._binding == null) {
