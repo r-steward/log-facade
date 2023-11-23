@@ -16,7 +16,7 @@ export class LoggerBindingManagerImpl implements LoggerBindingManager {
   public registerBinding(binding: LoggerBinding) {
     // tslint:disable-next-line:no-console
     console.log('Registering log binding:' + binding.vendor);
-    this.loggerFactory.bindLogger(binding.loggerImplementation);
+    this.loggerFactory.bindLogger({ ...binding });
   }
 
   public get LoggerFactory(): LoggerFactory {

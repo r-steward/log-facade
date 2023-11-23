@@ -1,26 +1,26 @@
-import { LoggerFactory, Logger, LoggerImplementation } from './logger-api';
+import { LoggerFactory, Logger, LoggerImplementation, LoggerBinding } from './logger-api';
 import { LoggerProxy } from './logger-proxy';
 
 export class LogFactoryImpl implements LoggerFactory {
-  private _implementation: LoggerImplementation | null = null;
+  private _binding: LoggerBinding | null = null;
   private _loggerProxies: Map<string, LoggerProxy> | null = null;
 
-  constructor(private _defaultLogger: Logger) {}
+  constructor(private _defaultLogger: Logger) { }
 
-  public bindLogger(implementation: LoggerImplementation) {
-    if (this._implementation != null) {
-      this._implementation = implementation;
+  public bindLogger(binding: LoggerBinding) {
+    if (this._binding == null) {
+      this._binding = binding;
       if (this._loggerProxies != null) {
-        this._loggerProxies.forEach((v, k) => (v.loggerImpl = implementation(k)));
+        this._loggerProxies.forEach((v, k) => (v.logger = binding.loggerImplementation(k)));
       }
     } else {
       // tslint:disable-next-line:no-console
-      console.warn('Attempt to bind new logging implementation ignored');
+      console.warn(`Attempt to bind new logging implementation ignored as ${this._binding.vendor} already bound`);
     }
   }
 
   public getLogger(name: string): Logger {
-    if (this._implementation == null) {
+    if (this._binding == null) {
       if (this._loggerProxies == null) {
         this._loggerProxies = new Map();
       }
@@ -28,6 +28,6 @@ export class LogFactoryImpl implements LoggerFactory {
       this._loggerProxies.set(name, logger);
       return logger;
     }
-    return this._implementation(name);
+    return this._binding.loggerImplementation(name);
   }
 }
