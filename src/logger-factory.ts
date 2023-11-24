@@ -1,4 +1,4 @@
-import { LoggerFactory, Logger, LoggerImplementation, LoggerBinding } from './logger-api';
+import { Logger, LoggerBinding, LoggerFactory } from './logger-api';
 import { LoggerProxy } from './logger-proxy';
 
 export class LogFactoryImpl implements LoggerFactory {

@@ -13,9 +13,11 @@ export class LoggerBindingManagerImpl implements LoggerBindingManager {
     this.loggerFactory = new LogFactoryImpl(new NoopLogger());
   }
 
-  public registerBinding(binding: LoggerBinding) {
-    // tslint:disable-next-line:no-console
-    console.log('Registering log binding:' + binding.vendor);
+  public registerBinding(binding: LoggerBinding, silent = true) {
+    if (!silent) {
+      // tslint:disable-next-line:no-console
+      console.log('Registering log binding:' + binding.vendor);
+    }
     this.loggerFactory.bindLogger({ ...binding });
   }
 
