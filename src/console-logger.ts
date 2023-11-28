@@ -1,8 +1,8 @@
-import { Logger, LoggerBinding, LoggerImplementation } from './logger-api';
+import { Logger, LoggerBinding } from './logger-api';
 
 export const ConsoleBinding: LoggerBinding = Object.freeze<LoggerBinding>({
   vendor: 'console',
-  loggerImplementation: name => new ConsoleLogger(name),
+  loggerImplementation: name => new ConsoleLogger(name)
 });
 
 /* tslint:disable:no-empty */
