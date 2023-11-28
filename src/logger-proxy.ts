@@ -1,7 +1,7 @@
 import { Logger } from './logger-api';
 
 export class LoggerProxy implements Logger {
-  constructor(private _logger: Logger) { }
+  constructor(private _logger: Logger) {}
 
   public set logger(value: Logger) {
     this._logger = value;
